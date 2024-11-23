@@ -10,7 +10,7 @@ package EstructuraDeDatos;
  */
 public class NodoSL {
     Integrante integrante;
-    NodeSL pNext;
+    NodoSL pNext;
 
     public NodoSL(Integrante integrante) {
         this.integrante = integrante;
