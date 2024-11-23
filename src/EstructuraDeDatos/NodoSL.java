@@ -2,12 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package EstructuraDeDatos;
+package proyecto2gonzalez;
 
 /**
  *
- * @author sebas
+ * @author andre
  */
-public class NodoSL {
-    
+public class NodeSL {
+    Integrante integrante;
+    NodeSL pNext;
+
+    public NodeSL(Integrante integrante) {
+        this.integrante = integrante;
+        this.pNext = null;
+    } 
 }
