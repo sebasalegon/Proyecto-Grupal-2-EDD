@@ -6,7 +6,7 @@ package proyecto2gonzalez;
 
 /**
  *
- * @author Aaron
+ * @author aaron
  */
 public class NodoFT {
     Integrante integrante;

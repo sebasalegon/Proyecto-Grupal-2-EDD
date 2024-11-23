@@ -6,13 +6,13 @@ package proyecto2gonzalez;
 
 /**
  *
- * @author andre
+ * @author aaron
  */
-public class NodeSL {
+public class NodoSL {
     Integrante integrante;
     NodeSL pNext;
 
-    public NodeSL(Integrante integrante) {
+    public NodoSL(Integrante integrante) {
         this.integrante = integrante;
         this.pNext = null;
     } 

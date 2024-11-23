@@ -6,7 +6,7 @@ package EstructuraDeDatos;
 
 /**
  *
- * @author sebas
+ * @author jesus
  */
 public class ListaSimple {
     
