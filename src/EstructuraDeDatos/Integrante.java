@@ -14,7 +14,7 @@ import java.util.List;
 public class Integrante {
     // Atributos obligatorios
     public String nombreCompleto;
-    public int ofHisName;
+    public String ofHisName;
     public String bornToFather;
     public String bornToMother;
     public String ofEyes;
@@ -29,15 +29,23 @@ public class Integrante {
     public String destino;
 
     // Constructor
-    public Integrante(String nombreCompleto, int ofHisName, String bornToFather, String ofEyes, String ofHair) {
+    public Integrante(String nombreCompleto, String ofHisName, String bornToFather, String ofEyes, String ofHair) {
         this.nombreCompleto = nombreCompleto;
         this.ofHisName = ofHisName;
         this.bornToFather = bornToFather;
         this.ofEyes = ofEyes;
         this.ofHair = ofHair;
         this.hijos = new ListaSimple();
+        this.conocidoComo = "";
+                this.esposa = "";
+        this.tituloNobiliario = "";
+        this.notas = "";
+        this.destino = "";
+       
+
+        
     }
-    
+
     // Métodos para agregar atributos opcionales
     public void setConocidoComo(String conocidoComo) {
         this.conocidoComo = conocidoComo;
@@ -87,4 +95,3 @@ public class Integrante {
     }
 
 }
-
