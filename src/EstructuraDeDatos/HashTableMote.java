@@ -8,22 +8,19 @@ package EstructuraDeDatos;
  *
  * @author sebas
  */
-public class HashTable {
+public class HashTableMote {
 
     private Integrante[] table;
     private int size;
 
-    public HashTable(int capacity) {
+    public HashTableMote(int capacity) {
         this.table = new Integrante[capacity];
         this.size = 0;
     }
 
     public void insertar(Integrante integrante) {
-        if (integrante.nombreCompleto != null) {
-            int index = hash(integrante.nombreCompleto);
-            if (index < 0) {
-                index *= -1;
-            }
+        if (integrante.conocidoComo != null) {
+            int index = hash(integrante.conocidoComo);
             while (table[index] != null) {
                 index = (index + 1) % table.length; // Manejo de colisiones lineales
             }
@@ -32,14 +29,10 @@ public class HashTable {
         }
     }
 
-    public Integrante buscar(String nombreCompleto) {
-        int index = hash(nombreCompleto);
-        if (index < 0) {
-            index *= -1;
-        }
-
+    public Integrante buscar(String mote) {
+        int index = hash(mote);
         while (table[index] != null) {
-            if (table[index].nombreCompleto.equals(nombreCompleto)) {
+            if (table[index].conocidoComo.equals(mote)) {
                 return table[index];
             }
             index = (index + 1) % table.length; // Buscar en la siguiente posición
@@ -47,12 +40,11 @@ public class HashTable {
         return null; // No encontrado
     }
 
-    private int hash(String nombreCompleto) {
-        return nombreCompleto.hashCode() % table.length;
+    private int hash(String mote) {
+        return mote.hashCode() % table.length;
     }
 
-    public boolean contiene(String nombreCompleto) {
-        return buscar(nombreCompleto) != null;
+    public boolean contiene(String mote) {
+        return buscar(mote) != null;
     }
 }
-
