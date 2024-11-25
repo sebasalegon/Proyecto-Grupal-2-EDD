@@ -16,18 +16,20 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author sebas
+ * @author aaron
  */
 public class Opciones extends javax.swing.JFrame {
 
-    public ArbolFamiliar tree;
+    public static ArbolFamiliar tree;
 
     /**
      * Creates new form Opciones
      */
-    public Opciones() {
+    public Opciones(ArbolFamiliar tree) {
         initComponents();
-        tree = new ArbolFamiliar(100);
+        this.setVisible(true);
+
+        this.tree = tree;
     }
 
     public void cargarArchivo(String rutaArchivo) {
@@ -96,11 +98,12 @@ public class Opciones extends javax.swing.JFrame {
                     destino = obtenerValor(detallesPersonaje, "Fate", destino);
 
                     // Agregar a la estructura de datos
-                    Integrante nuevoIntegrante = new Integrante(nombreCompleto, numeral, padre, colorOjos, colorCabello);
+                    Integrante nuevoIntegrante = new Integrante(nombreCompleto + ", " + numeral + " of his name", numeral + " Of His Name", padre, colorOjos, colorCabello);
                     nuevoIntegrante.conocidoComo = mote;
                     nuevoIntegrante.destino = destino;
                     nuevoIntegrante.esposa = esposa;
                     nuevoIntegrante.notas= notas;
+                    nuevoIntegrante.tituloNobiliario = titulo;
                     tree.agregarIntegrante(nuevoIntegrante, padre);
                 }
             }
@@ -173,8 +176,11 @@ public class Opciones extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.cargarArchivo(this.buscarArchivoJson());
-        GraphStream g = new GraphStream(this.tree);
-        g.setVisible(true);
+//        GraphStream g = new GraphStream(this.tree);
+//        g.setVisible(true);
+        Menu menu = new Menu(tree);
+        menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -208,7 +214,7 @@ public class Opciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Opciones().setVisible(true);
+                new Opciones(tree).setVisible(true);
             }
         });
     }

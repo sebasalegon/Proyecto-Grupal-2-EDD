@@ -39,6 +39,8 @@ public class GraphStream extends javax.swing.JFrame implements ViewerListener {
     public GraphStream(ArbolFamiliar tree) {
         this.tree = tree;
         initComponents();
+        this.setVisible(true);
+
         this.setLocationRelativeTo(null);
         graph = new SingleGraph("ARBOL FAMILIAR");
 
@@ -65,7 +67,7 @@ public class GraphStream extends javax.swing.JFrame implements ViewerListener {
         if (nodo == null) {
             return;
         }
-        String clave = nodo.integrante.nombreCompleto + "/" + nodo.integrante.ofHisName;
+        String clave = nodo.integrante.nombreCompleto;
         graph.addNode(clave);
         Node node = graph.getNode(clave);
         node.setAttribute("xyz", x, y, 1);
@@ -74,7 +76,7 @@ public class GraphStream extends javax.swing.JFrame implements ViewerListener {
         node.setAttribute("ui.clickable", true); 
 
         if (nodo.father != null) {
-            String clave2 = nodo.father.integrante.nombreCompleto + "/"+ nodo.father.integrante.ofHisName;
+            String clave2 = nodo.father.integrante.nombreCompleto;
             graph.addEdge(clave2 + "-" + clave, clave2, clave);
         }
 

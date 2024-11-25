@@ -15,5 +15,7 @@ public class NodoSL {
     public NodoSL(Integrante integrante) {
         this.integrante = integrante;
         this.pNext = null;
-    } 
+    }
+    
+    
 }

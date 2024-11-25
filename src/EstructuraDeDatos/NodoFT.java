@@ -18,4 +18,6 @@ public class NodoFT {
         this.father = father;
         this.sons = new NodoFT[10];
     }
+    
+    
 }
