@@ -11,7 +11,7 @@ package EstructuraDeDatos;
 public class ArbolFamiliar {
 
     public NodoFT root;
-    private HashTable hashTable;
+    public HashTable hashTable;
 
     public ArbolFamiliar(int hashTableCapacity) {
         this.root = null;
@@ -71,11 +71,11 @@ public class ArbolFamiliar {
         return null;
     }
     
-    private NodoFT buscarIntegrantePorMote(String nombreCompleto, NodoFT nodo) {
+    public NodoFT buscarIntegrantePorMote(String nombreCompleto, NodoFT nodo) {
         if (nodo == null) {
             return null;
         }
-        if (nodo.integrante.conocidoComo.equals(nombreCompleto)) {
+        if (nodo.integrante.conocidoComo.equals(nombreCompleto) || nodo.integrante.nombreCompleto.equals(nombreCompleto)) {
             return nodo;
         }
         for (NodoFT hijo : nodo.sons) {
@@ -90,11 +90,12 @@ public class ArbolFamiliar {
     
     
     public NodoFT buscarPadre(String nombre, NodoFT nodo){
-        String[] padre = nombre.trim().split(",");
         if (nodo == null) {
             return null;
         }
-        if (nodo.integrante.nombreCompleto.trim().equals(padre[0]) && padre[1].contains(nodo.integrante.ofHisName.trim())) {
+                System.out.println(nombre + "    +-+-+-+-+-+    " + nodo.integrante.nombreCompleto);
+
+        if (nodo.integrante.nombreCompleto.equals(nombre)) {
             return nodo;
         }
         for (NodoFT hijo : nodo.sons) {
@@ -154,22 +155,25 @@ private void buscarAntepasados(NodoFT nodo, ListaSimple lista) {
     // 5. Buscar por Título
     public ListaSimple buscarPorTitulo(String titulo) {
         ListaSimple listaResultados = new ListaSimple();
-        buscarIntegrantesPorTitulo(titulo, root, listaResultados);
-        return listaResultados;
+        return buscarIntegrantesPorTitulo(titulo, root, listaResultados);
+        
     }
 
-    private void buscarIntegrantesPorTitulo(String titulo, NodoFT nodo, ListaSimple lista) {
+    private ListaSimple buscarIntegrantesPorTitulo(String titulo, NodoFT nodo, ListaSimple lista) {
         if (nodo == null) {
-            return;
+            return lista;
         }
+        if(nodo.integrante.tituloNobiliario != null){
+        System.out.println(nodo.integrante.tituloNobiliario  + "  /////////////////  " + titulo);}
         if (nodo.integrante.tituloNobiliario != null && nodo.integrante.tituloNobiliario.equals(titulo)) {
             lista.insertar(nodo.integrante);
         }
         for (NodoFT hijo : nodo.sons) {
             if (hijo != null) {
-                buscarIntegrantesPorTitulo(titulo, hijo, lista);
+                lista = buscarIntegrantesPorTitulo(titulo, hijo, lista);
             }
         }
+        return lista;
     }
 
     // 6. Lista de integrantes de una generación

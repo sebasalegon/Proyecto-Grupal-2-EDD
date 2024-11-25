@@ -6,7 +6,7 @@ package EstructuraDeDatos;
 
 /**
  *
- * @author jesus
+ * @author sebas
  */
 public class ListaSimple {
     public NodoSL pFirst;
